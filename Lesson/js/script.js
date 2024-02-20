@@ -1,42 +1,67 @@
-// let form = document.querySelector(".form");
-// let nameInput = document.querySelector(".inputName");
-// let lastNameInput = document.querySelector(".inputLastName");
-// let age = document.querySelector("#age");
+// const form = document.querySelector(".form");
+// const nameInput = document.querySelector(".inputName");
+// const lastNameInput = document.querySelector(".inputLastName");
+// const age = document.querySelector("#age");
 // let male = document.getElementsByName("radio");
 
 // form.addEventListener("submit", handleSubmit);
 
 // function handleSubmit(event) {
-//   event.preventDefault();
+//   event.preventDefault(); 
+
 //   const info = {
 //     name: nameInput.value,
 //     lastName: lastNameInput.value,
 //     age: age.value,
 //     male: male[0].checked,
 //   };
+
 //   console.log(info);
+
 //   localStorage.setItem("info", JSON.stringify(info));
 // }
 
+// function check() {
+//   let val = document.getElementsByName("radio");
+
+//   if ( val[0]. checked) {
+//     console.log("Жіноча");
+//   } else {
+//     console.log("Чоловіча")
+//   }
+// }
+
+// const a = localStorage.getItem("info");
+
+// console.log(JSON.parse(a));
+
 // if (localStorage.getItem("info")) {
 //   const ls = JSON.parse(localStorage.getItem("info"));
+  
 //   console.log(ls);
+  
 //   nameInput.value = ls.name;
 //   lastNameInput.value = ls.lastName;
 // }
 
-// let form = document.querySelector("#form");
-// let formData = {};
+// ----->>> More usefull version
 
-// form.addEventListener("input", function (event) {
-//   formData[event.target.name] = event.target.value;
-//   localStorage.setItem("formData", JSON.stringify(formData));
-// });
 
-// if (localStorage.getItem("formData")) {
-//   formData = JSON.parse(localStorage.getItem("formData"));
+let form = document.querySelector("#form");
+let formData = {};
 
-//   for (let key in formData) {
-//     form.elements[key].value = formData[key];
-//   }
-// }
+form.addEventListener("input", 
+  function (event) {
+    formData[event.target.name] = event.target.value;
+  
+    localStorage.setItem("formData", JSON.stringify(formData));
+  }
+);
+
+if (localStorage.getItem("formData")) {
+  formData = JSON.parse(localStorage.getItem("formData"));
+
+  for (let key in formData) {
+    form.elements[key].value = formData[key];
+  }
+}
